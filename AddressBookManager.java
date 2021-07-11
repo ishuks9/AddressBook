@@ -23,8 +23,60 @@ public class AddressBookManager {
 			return input;
 		}
 	 
+	 public int indexOfPerson(){
 
-     public void addPerson(Person person) {
+			System.out.println();
+			String name=readString("[+]Enter Person's name: ");
+			long phoneNumber=readLong("[+]Enter his/her phone number: ");
+
+			int index=0;
+			for(Person p : this.persons)
+			{
+				if(p.getName().equals(name) && p.getPhoneNumber()==phoneNumber){
+					return index;
+				}
+				++index;
+			}
+			return -1;
+		}
+
+	  public void editPerson(){
+
+			int index=this.indexOfPerson();
+
+			if(index != -1){
+				String options="[+]\tWhat you want to change?\n\t1. City\n\t2. State\n\t3. Address\n\t4. Zip Code\n\t5. PhoneNumber\n: ";
+				int choice=(int)readLong(options);
+
+				switch(choice)
+				{
+					case 1: 
+						this.persons.get(index).setCity(readString("[+]Enter new City: "));
+						System.out.println("[*]\tEntry Modified");
+						break;
+					case 2: 
+						this.persons.get(index).setState(readString("[+]Enter new State: "));
+						System.out.println("[*]\tEntry Modified");
+						break;
+					case 3: 
+						this.persons.get(index).setAddress(readString("[+]Enter new Address: "));
+						System.out.println("[*]\tEntry Modified");
+						break;
+					case 4: 
+						this.persons.get(index).setZipCode(readString("[+]Enter new Zip Code: "));
+						System.out.println("[*]\tEntry Modified");
+						break;
+					case 5: 
+						this.persons.get(index).setPhoneNumber(readLong("[+]Enter new Phone number: "));
+						System.out.println("[*]\tEntry Modified");
+						break;
+					default:
+						System.out.println("\n[*]\tBad Input!");
+				}
+			}
+	  }
+
+     public void addPerson() {
              
        //  if(!persons.contains(person)){
          //     persons.add(person);
@@ -46,15 +98,15 @@ public class AddressBookManager {
  		long choice=-1;
  		while(choice != 0)
  		{
- 			System.out.println();
+ 			
  			System.out.println("o--------------------Address Book Manager--------------------o");
  			System.out.println("| 1. Add a person");
  			
  			switch((int)choice)
 			{
-				case 1: addPerson(null);
+				case 1: addPerson();
 					break;
-				case 8: choice = 0;
+				case 2: choice = 0;
 				break;
 			default: System.out.println("\n[*]\tBad Input!");	
  		}
