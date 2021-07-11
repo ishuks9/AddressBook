@@ -54,4 +54,17 @@ public class Person{
 	public long getPhoneNumber(){
 		return this.phoneNumber;
 	}
+
+             public void showPersonsDetails(){
+
+		System.out.println("\n+" + new String(new char[54]).replace('\0', '-')+"+");
+		System.out.format("| %20s: %30s |\n","Name", this.getName());
+		System.out.format("| %20s: %30s |\n","Phone Number", this.getPhoneNumber());
+		System.out.format("| %20s: %30s |\n","City", this.getCity());
+		System.out.format("| %20s: %30s |\n","State", this.getState());
+		System.out.format("| %20s: %30s |\n","Address", this.getAddress());
+		System.out.format("| %20s: %30s |\n","Zip Code", this.getZipCode());
+		System.out.println("+" + new String(new char[54]).replace('\0', '-')+"+");
+	}
+    
 }
