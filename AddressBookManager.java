@@ -80,7 +80,7 @@ public class AddressBookManager {
              
        //  if(!persons.contains(person)){
          //     persons.add(person);
-    	 System.out.println();
+    	 
  		String name=readString("[+]Enter Person's name: ");
  		String city=readString("[+]Enter where he/she lives first enter City: ");
  		String state=readString("[+]Now, enter State: ");
@@ -101,13 +101,15 @@ public class AddressBookManager {
  			
  			System.out.println("o--------------------Address Book Manager--------------------o");
  			System.out.println("| 1. Add a person");
+ 			System.out.println("| 2. Edit a person");
  			
  			switch((int)choice)
 			{
 				case 1: addPerson();
 					break;
-				case 2: choice = 0;
-				break;
+				case 2: editPerson();
+				 break;
+			
 			default: System.out.println("\n[*]\tBad Input!");	
  		}
  	 }
@@ -118,3 +120,4 @@ public class AddressBookManager {
              }
      }
 }
+
