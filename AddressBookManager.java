@@ -117,10 +117,37 @@ public class AddressBookManager {
  		Collections.sort(this.persons, (person1, person2) -> (person1.getZipCode().compareTo(person2.getZipCode())));
  		System.out.println("\n[*]\tEntries sorted by zip code successfully");
  	}
+ 	
+ 	/* Display Methods */
+	public void showPerson(){
+
+		int index=this.indexOfPerson();
+
+		if(index != -1){
+
+			this.persons.get(index).showPersonsDetails();
+		}
+		else{
+
+			System.out.println("\n[*]\tNo one with these details found!");
+		}
+	}
+	
+	public void showAllPersons(){
+
+		for(Person p : this.persons)
+		{
+			p.showPersonsDetails();
+		}
+		if(this.persons.isEmpty()){
+
+			System.out.println("\n\n[*]\t\tAddress Book is empty!\t\t\n");
+		}
+	}
      
      public void runMenu(){
 
- 		int edit=-1;
+ 		long edit=-1;   //int
  		while(edit != 0)
  		{
  			
@@ -130,11 +157,16 @@ public class AddressBookManager {
  			System.out.println("| 3. Delete a person");
  			System.out.println("| 4. Sort Address Book by Name Field");
 			System.out.println("| 5. Sort Address Book by Zip Code Field");
- 			System.out.println("| 6. To exit");
- 			int menu =0;
- 			menu =sc.nextInt();
+			System.out.println("| 6. Show a person");
+			System.out.println("| 7. Show all persons");
+			System.out.println("| 8. Exit");
+			System.out.println("o------------------------------------------------------------o");
+			edit=readLong("[+]Enter your choice: ");
+
+ 			//int menu =0;
+ 			//menu =sc.nextInt();
  			
- 			switch(menu)
+ 			switch((int)edit)  //menu
 			{
 				case 1: addPerson();
 				break;
@@ -144,7 +176,7 @@ public class AddressBookManager {
 				break;
 				case 4: sortByName();
 				break;
-			        case 5: sortByZip();
+			    case 5: sortByZip();
 				break;
 				case 6: edit= 0;
 				break;
@@ -158,6 +190,8 @@ public class AddressBookManager {
              }
      }
 }
+
+
 
 
 
