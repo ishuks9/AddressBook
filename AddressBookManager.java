@@ -91,6 +91,21 @@ public class AddressBookManager {
  		System.out.println("\n[*]\t"+name+" added successfully to address book.");
         }
      
+     public void deletePerson(){
+ 		
+ 		int index=this.indexOfPerson();
+
+ 		if(index != -1){
+
+ 			Person p=this.persons.remove(index);
+ 			System.out.println("\n[*]\tPerson "+p.getName()+" with mobile number "+p.getPhoneNumber()+" removed successfully.");
+ 		}
+ 		else{
+
+ 			System.out.println("\n[*]\tNo one with these details found!");
+ 		}
+ 	}
+     
      public void runMenu(){
 
  		int edit=-1;
@@ -100,18 +115,21 @@ public class AddressBookManager {
  			System.out.println("o--------------------Address Book Manager--------------------o");
  			System.out.println("| 1. Add a person");
  			System.out.println("| 2. Edit a person");
- 			System.out.println("3. To exit");
+ 			System.out.println("| 3. Delete a person");
+ 			System.out.println("| 4. To exit");
  			int menu =0;
  			menu =sc.nextInt();
  			
  			switch(menu)
 			{
 				case 1: addPerson();
-					break;
+				break;
 				case 2: editPerson();
-				 break;
-				case 3: edit= 0;
-				 break;
+				break;
+				case 3: deletePerson();
+				break;
+				case 4: edit= 0;
+				break;
 			
 			default: System.out.println("\n[*]\tBad Input!");	
  		}
@@ -123,6 +141,8 @@ public class AddressBookManager {
              }
      }
 }
+
+
 
 
 
