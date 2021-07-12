@@ -4,10 +4,9 @@ import java.util.Scanner;
 
 public class AddressBookManager {
 	 List<Person> persons = new ArrayList<Person>();
-	 
+	    Scanner sc = new Scanner(System.in);
 	 public String readString(String displayMessage){
 
-			Scanner sc = new Scanner(System.in);
 			System.out.print(displayMessage);
 			String input=sc.nextLine();
 
@@ -16,7 +15,6 @@ public class AddressBookManager {
 	 
 	 public long readLong(String displayMessage){
 
-			Scanner sc = new Scanner(System.in);
 			System.out.print(displayMessage);
 			long input=sc.nextLong();
 			
@@ -95,19 +93,24 @@ public class AddressBookManager {
      
      public void runMenu(){
 
- 		long choice=-1;
- 		while(choice != 0)
+ 		int edit=-1;
+ 		while(edit != 0)
  		{
  			
  			System.out.println("o--------------------Address Book Manager--------------------o");
  			System.out.println("| 1. Add a person");
  			System.out.println("| 2. Edit a person");
+ 			System.out.println("3. To exit");
+ 			int menu =0;
+ 			menu =sc.nextInt();
  			
- 			switch((int)choice)
+ 			switch(menu)
 			{
 				case 1: addPerson();
 					break;
 				case 2: editPerson();
+				 break;
+				case 3: edit= 0;
 				 break;
 			
 			default: System.out.println("\n[*]\tBad Input!");	
@@ -120,4 +123,6 @@ public class AddressBookManager {
              }
      }
 }
+
+
 
