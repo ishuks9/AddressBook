@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -106,6 +107,17 @@ public class AddressBookManager {
  		}
  	}
      
+     public void sortByName(){
+ 		
+ 		Collections.sort(this.persons, (person1, person2) -> (person1.getName().compareTo(person2.getName())));
+ 		System.out.println("\n[*]\tEntries sorted by name successfully");
+ 	}
+ 	public void sortByZip(){
+ 		
+ 		Collections.sort(this.persons, (person1, person2) -> (person1.getZipCode().compareTo(person2.getZipCode())));
+ 		System.out.println("\n[*]\tEntries sorted by zip code successfully");
+ 	}
+     
      public void runMenu(){
 
  		int edit=-1;
@@ -116,7 +128,9 @@ public class AddressBookManager {
  			System.out.println("| 1. Add a person");
  			System.out.println("| 2. Edit a person");
  			System.out.println("| 3. Delete a person");
- 			System.out.println("| 4. To exit");
+ 			System.out.println("| 4. Sort Address Book by Name Field");
+			System.out.println("| 5. Sort Address Book by Zip Code Field");
+ 			System.out.println("| 6. To exit");
  			int menu =0;
  			menu =sc.nextInt();
  			
@@ -128,9 +142,12 @@ public class AddressBookManager {
 				break;
 				case 3: deletePerson();
 				break;
-				case 4: edit= 0;
+				case 4: sortByName();
 				break;
-			
+			        case 5: sortByZip();
+				break;
+				case 6: edit= 0;
+				break;
 			default: System.out.println("\n[*]\tBad Input!");	
  		}
  	 }
@@ -141,6 +158,8 @@ public class AddressBookManager {
              }
      }
 }
+
+
 
 
 
