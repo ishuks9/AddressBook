@@ -132,7 +132,7 @@ public class AddressBookManager {
 			System.out.println("\n[*]\tNo one with these details found!");
 		}
 	}
-	
+	 // get duplicate entry
 	public void showAllPersons(){
 
 		for(Person p : this.persons)
