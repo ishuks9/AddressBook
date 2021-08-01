@@ -112,6 +112,8 @@ public class AddressBookManager {
  		Collections.sort(this.persons, (person1, person2) -> (person1.getName().compareTo(person2.getName())));
  		System.out.println("\n[*]\tEntries sorted by name successfully");
  	}
+
+        //Sort by zip code
  	public void sortByZip(){
  		
  		Collections.sort(this.persons, (person1, person2) -> (person1.getZipCode().compareTo(person2.getZipCode())));
