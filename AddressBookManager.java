@@ -21,7 +21,7 @@ public class AddressBookManager {
 			
 			return input;
 		}
-	 
+	 //INDEX OF PERSON
 	 public int indexOfPerson(){
 
 			System.out.println();
