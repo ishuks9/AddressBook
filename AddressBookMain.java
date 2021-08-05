@@ -1,13 +1,14 @@
 public class AddressBookMain {
+	
 
-      public static void main(String arg[]){
+	public static void main(String[] args) {
+		
+	
 
-              System.out.println("Welcome to Address Book");
-
-                AddressBookManager addressBook = new AddressBookManager();
-
-                addressBook.print();
-        }
+		AddressBookManager addressBook = new AddressBookManager();
+        
+		addressBook.runMenu();
+		addressBook.print();
+	}
 
 }
-
