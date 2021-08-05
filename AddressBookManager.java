@@ -1,14 +1,16 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
 public class AddressBookManager {
 	 List<Person> persons = new ArrayList<Person>();
 	    Scanner sc = new Scanner(System.in);
+	    
 	 public String readString(String displayMessage){
 
 			System.out.print(displayMessage);
-			String input=sc.nextLine();
+			String input=sc.next();
 
 			return input;
 		}
@@ -91,28 +93,97 @@ public class AddressBookManager {
  		System.out.println("\n[*]\t"+name+" added successfully to address book.");
         }
      
+     public void deletePerson(){
+ 		
+ 		int index=this.indexOfPerson();
+
+ 		if(index != -1){
+
+ 			Person p=this.persons.remove(index);
+ 			System.out.println("\n[*]\tPerson "+p.getName()+" with mobile number "+p.getPhoneNumber()+" removed successfully.");
+ 		}
+ 		else{
+
+ 			System.out.println("\n[*]\tNo one with these details found!");
+ 		}
+ 	}
+     
+     public void sortByName(){
+ 		
+ 		Collections.sort(this.persons, (person1, person2) -> (person1.getName().compareTo(person2.getName())));
+ 		System.out.println("\n[*]\tEntries sorted by name successfully");
+ 	}
+ 	public void sortByZip(){
+ 		
+ 		Collections.sort(this.persons, (person1, person2) -> (person1.getZipCode().compareTo(person2.getZipCode())));
+ 		System.out.println("\n[*]\tEntries sorted by zip code successfully");
+ 	}
+ 	
+ 	/* Display Methods */
+	public void showPerson(){
+
+		int index=this.indexOfPerson();
+
+		if(index != -1){
+
+			this.persons.get(index).showPersonsDetails();
+		}
+		else{
+
+			System.out.println("\n[*]\tNo one with these details found!");
+		}
+	}
+	
+	public void showAllPersons(){
+
+		for(Person p : this.persons)
+		{
+			p.showPersonsDetails();
+		}
+		if(this.persons.isEmpty()){
+
+			System.out.println("\n\n[*]\t\tAddress Book is empty!\t\t\n");
+		}
+	}
+     
      public void runMenu(){
 
- 		int edit=-1;
+ 		long edit=-1;   //int
  		while(edit != 0)
  		{
  			
  			System.out.println("o--------------------Address Book Manager--------------------o");
  			System.out.println("| 1. Add a person");
  			System.out.println("| 2. Edit a person");
- 			System.out.println("3. To exit");
- 			int menu =0;
- 			menu =sc.nextInt();
+ 			System.out.println("| 3. Delete a person");
+ 			System.out.println("| 4. Sort Address Book by Name Field");
+			System.out.println("| 5. Sort Address Book by Zip Code Field");
+			System.out.println("| 6. Show a person");
+			System.out.println("| 7. Show all persons");
+			System.out.println("| 8. Exit");
+			System.out.println("o------------------------------------------------------------o");
+			edit=readLong("[+]Enter your choice: ");
+
+ 			//int menu =0;
+ 			//menu =sc.nextInt();
  			
- 			switch(menu)
+ 			switch((int)edit)  //menu
 			{
 				case 1: addPerson();
-					break;
+				break;
 				case 2: editPerson();
-				 break;
-				case 3: edit= 0;
-				 break;
-			
+				break;
+				case 3: deletePerson();
+				break;
+				case 4: sortByName();
+				break;
+			    case 5: sortByZip();
+				break;
+				case 6: showPerson();
+				break;
+				case 7: showAllPersons();
+				break;
+				case 8: edit =0;
 			default: System.out.println("\n[*]\tBad Input!");	
  		}
  	 }
@@ -123,6 +194,4 @@ public class AddressBookManager {
              }
      }
 }
-
-
 
